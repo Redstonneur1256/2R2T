@@ -1,0 +1,20 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+dependencies {
+    api project(':Common')
+    api 'dev.jeka:jeka-core:0.10.1'
+    api 'org.jetbrains:annotations:23.1.0'
+
+    compileOnly 'com.github.Anuken.Arc:arc-core:v141'
+    compileOnly 'com.github.Anuken.Arc:backend-headless:v141'
+    compileOnly 'com.github.Anuken.Mindustry:core:v141'
+    compileOnly 'org.codehaus.groovy:groovy-all:3.0.14'
+}
+
+shadowJar.archiveFileName = '2R2T-Renewed.jar'
+
+processResources {
+    filesMatching('plugin.json') {
+        filter(ReplaceTokens, tokens: [version: version])
+    }
+}

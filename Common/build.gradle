@@ -1,0 +1,3 @@
+dependencies {
+    api 'com.owlike:genson:1.6'
+}

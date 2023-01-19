@@ -1,0 +1,7 @@
+.idea/
+.gradle/
+build/
+
+# Private testing
+run/
+Scripting/

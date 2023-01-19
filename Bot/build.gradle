@@ -1,0 +1,35 @@
+plugins {
+    id 'application'
+}
+
+dependencies {
+    api project(':Common')
+
+    // Discord:
+    api 'net.dv8tion:JDA:5.0.0-alpha.18'
+    api 'co.aikar:acf-jda:0.5.1-SNAPSHOT'
+
+    // Web API:
+    api 'io.javalin:javalin:5.2.0'
+    api 'io.javalin:javalin-rendering:5.2.0'
+    api 'gg.jte:jte:2.2.4'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.14.0'
+    api 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.0'
+
+    // Logging & Utilities:
+    api 'org.slf4j:slf4j-simple:2.0.5'
+    api 'com.google.guava:guava:31.1-jre'
+    api 'org.eclipse.collections:eclipse-collections-api:11.1.0'
+    api 'org.eclipse.collections:eclipse-collections:11.1.0'
+}
+
+run {
+    workingDir = new File(rootProject.projectDir, 'run/')
+    standardInput = System.in
+    main = 'fr.redstonneur1256.omega.bot.OmegaBot'
+    environment('webPath', sourceSets.main.resources.srcDirs[0].absolutePath + "/web/")
+}
+
+tasks.shadowJar.archiveFileName = 'Application.jar'
+
+project.setProperty('mainClassName', 'fr.redstonneur1256.omega.bot.OmegaBot')
